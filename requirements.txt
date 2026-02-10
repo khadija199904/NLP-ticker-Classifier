@@ -10,4 +10,4 @@ langchain-huggingface
 sentence-transformers
 python-dotenv
 chromadb
-
+langchain_chroma
