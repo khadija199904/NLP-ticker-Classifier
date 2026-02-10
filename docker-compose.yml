@@ -1,0 +1,31 @@
+
+services:
+  
+  chroma_db:
+    image: chromadb/chroma:latest
+    container_name: chroma_server
+    ports:
+      - "8080:8000"
+    volumes:
+      - ./chroma_data:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/chroma/chroma
+    restart: always
+
+  
+  nlp_app:
+    build: .
+    container_name: nlp_ticker_app
+    depends_on:
+      - chroma_db
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    environment:
+      - CHROMA_HOST=chroma_db
+      - CHROMA_PORT=8000
+    
+volumes:
+  chroma_data:
