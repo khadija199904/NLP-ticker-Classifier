@@ -9,4 +9,5 @@ langchain
 langchain-huggingface
 sentence-transformers
 python-dotenv
+chromadb
 
