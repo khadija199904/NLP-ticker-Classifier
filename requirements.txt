@@ -3,3 +3,10 @@ pandas
 matplotlib 
 seaborn
 nltk
+
+# langchain
+langchain
+langchain-huggingface
+sentence-transformers
+python-dotenv
+
