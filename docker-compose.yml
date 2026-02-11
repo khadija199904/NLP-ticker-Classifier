@@ -7,7 +7,7 @@ services:
     ports:
       - "8080:8000"
     volumes:
-      - ./chroma_data:/chroma/chroma
+      - chroma_data:/chroma/chroma
     environment:
       - IS_PERSISTENT=TRUE
       - PERSIST_DIRECTORY=/chroma/chroma
@@ -21,11 +21,14 @@ services:
       - chroma_db
     volumes:
       - .:/app
+      - hf_cache:/root/.cache/huggingface 
     env_file:
       - .env
     environment:
       - CHROMA_HOST=chroma_db
       - CHROMA_PORT=8000
+      - HF_HOME=/root/.cache/huggingface
     
 volumes:
   chroma_data:
+  hf_cache:
