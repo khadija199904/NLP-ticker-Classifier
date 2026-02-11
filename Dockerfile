@@ -16,5 +16,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Exécute tous les scripts Python trouvés dans le projet (ml, nlp-pipeline, etc.)
-CMD ["sh", "-c", "find . -name '*.py' ! -name '__*' -exec python {} \\;"]
+
+CMD ["sh", "-c", "find ml nlp-pipeline -name '*.py' ! -name '__*' -exec python {} \\;"]
