@@ -98,7 +98,7 @@ def store_embeddings(texts: list[str], embedding_model: Any, metadatas: list[dic
         print(f"Erreur lors du stockage dans ChromaDB : {e}")
         return None 
 
-def process_and_store(file_path=DATA_CLEANED_PATH, limit=None):
+def pipeline_embedding(file_path=DATA_CLEANED_PATH, limit=None):
     """
     Chaîne le chargement du CSV et le stockage.
     """
@@ -117,4 +117,4 @@ def process_and_store(file_path=DATA_CLEANED_PATH, limit=None):
 
 if __name__ == "__main__":
     
-    process_and_store(DATA_CLEANED_PATH)
+    pipeline_embedding(DATA_CLEANED_PATH)
