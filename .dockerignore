@@ -1,0 +1,10 @@
+.venv/
+.git/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+chroma_data/
+chroma_db/
+.env
+data/dataset.csv
+
