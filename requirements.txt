@@ -8,6 +8,7 @@ nltk
 langchain
 langchain-huggingface
 sentence-transformers
+langchain_text_splitters
 python-dotenv
 chromadb
 langchain_chroma
