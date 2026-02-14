@@ -1,8 +1,9 @@
-.venv/
-.git/
-__pycache__/
+.venv
+.git
+__pycache__
+.pytest_cache
 *.pyc
-.ipynb_checkpoints/
+.ipynb_checkpoints
 chroma_data/
 chroma_db/
 .env

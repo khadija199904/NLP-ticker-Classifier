@@ -3,7 +3,7 @@ services:
     image: chromadb/chroma:latest
     container_name: chroma_server
     ports:
-      - "8080:8000"
+      - "8090:8000"
     volumes:
       - chroma_data:/chroma/chroma
     environment:
@@ -18,7 +18,8 @@ services:
     depends_on:
       - chroma_db
     volumes:
-      - .:/app
+      - /src :/app/src
+      - /infrastructure:/app/infrastructure
       - hf_cache:/root/.cache/huggingface 
     env_file:
       - .env
@@ -31,7 +32,7 @@ services:
     image: prom/prometheus
     container_name: prometheus
     volumes:
-      - ./infrastructure/monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./infrastructure/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
     restart: always
@@ -53,9 +54,7 @@ services:
     container_name: grafana
     ports:
       - "3000:3000"
-    volumes:
-      - ./infrastructure/monitoring/grafana/provisioning:/etc/grafana/provisioning
-    restart: always
+    
 
   node-exporter:
     image: prom/node-exporter

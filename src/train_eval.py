@@ -6,13 +6,8 @@ import joblib
 import time
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-<<<<<<< HEAD:src/train_eval.py
-from sklearn.metrics import classification_report, accuracy_score
-from embedding_service import get_chroma_client
-=======
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
-from src.embedding_service import get_chroma_client
->>>>>>> feature/NTC-14-github-actions-cicd:src/train_model.py
+
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
