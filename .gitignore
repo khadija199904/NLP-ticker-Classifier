@@ -3,7 +3,7 @@ data/
 .env
 __pycache__/
 chroma_data/
-notebooks/
+
 .git
 .gitignore
 Dockerfile
