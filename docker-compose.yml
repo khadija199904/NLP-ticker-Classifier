@@ -1,6 +1,4 @@
-
 services:
-  
   chroma_db:
     image: chromadb/chroma:latest
     container_name: chroma_server
@@ -13,7 +11,6 @@ services:
       - PERSIST_DIRECTORY=/chroma/chroma
     restart: always
 
-  
   nlp_app:
     build: .
     container_name: nlp_ticker_app
@@ -29,7 +26,44 @@ services:
       - CHROMA_HOST=chroma_db
       - CHROMA_PORT=8000
       - HF_HOME=/root/.cache/huggingface
-    
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./infrastructure/monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    restart: always
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - "8080:8080"
+    restart: always
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./infrastructure/monitoring/grafana/provisioning:/etc/grafana/provisioning
+    restart: always
+
+  node-exporter:
+    image: prom/node-exporter
+    container_name: node-exporter
+    ports:
+      - "9100:9100"
+    restart: always
+
 volumes:
   chroma_data:
   hf_cache:
