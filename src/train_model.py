@@ -7,7 +7,7 @@ import time
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
-from embedding_service import get_chroma_client
+from src.embedding_service import get_chroma_client
 
 # Ajout du chemin parent pour l'import de config
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))

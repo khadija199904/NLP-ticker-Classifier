@@ -9,7 +9,7 @@ from langchain_chroma import Chroma
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from src.config import (
+from config import (
     EMBEDDING_MODEL_NAME, 
     HF_TOKEN, 
     COLLECTION_NAME, 
