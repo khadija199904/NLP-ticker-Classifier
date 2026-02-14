@@ -7,4 +7,5 @@ chroma_data/
 chroma_db/
 .env
 data/dataset.csv
-
+.github/
+tests/
