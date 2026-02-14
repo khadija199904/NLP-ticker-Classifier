@@ -63,7 +63,3 @@ docker-compose up -d
 
 ---
 
-## 📅 Planning
-The project is organized into **5 Epics** tracked in the `jira_plan.md` file.
-*   **Duration**: 09/02/2026 - 14/02/2026.
-*   **Goal**: Industrialization of a Batch NLP Pipeline.
