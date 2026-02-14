@@ -1,4 +1,14 @@
 .venv
-data/dataset.csv
+data/
 .env
 __pycache__/
+chroma_data/
+notebooks/
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+.dockerignore
+chroma_data/
+
+artifacts/

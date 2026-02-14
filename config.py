@@ -21,7 +21,7 @@ if __name__ == "__main__":
     print(f"Tentative de connexion à ChromaDB sur {CHROMA_HOST}:{CHROMA_PORT}...")
     client = chromadb.HttpClient(host=CHROMA_HOST, port=int(CHROMA_PORT))
     heartbeat = client.heartbeat()
-    print(f"✅ Succès ! Serveur opérationnel (Heartbeat: {heartbeat})")
+    print(f" Succès ! Serveur opérationnel (Heartbeat: {heartbeat})")
   except Exception as e:
-    print(f"❌ Erreur de connexion : {e}")
+    print(f" Erreur de connexion : {e}")
     print("Assurez-vous que Docker Desktop ou le conteneur ChromaDB est démarré.")
