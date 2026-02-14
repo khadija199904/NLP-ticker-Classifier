@@ -7,6 +7,7 @@ import time
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
+from embedding_service import get_chroma_client
 
 # Ajout du chemin parent pour l'import de config
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -25,7 +26,7 @@ def load_data_from_chroma():
     """
     try:
         print("🔄 Chargement des données...")
-        client = chromadb.HttpClient(host=CHROMA_HOST, port=int(CHROMA_PORT))
+        client = get_chroma_client()
         collection = client.get_collection(name=COLLECTION_NAME)
     
         total = collection.count()

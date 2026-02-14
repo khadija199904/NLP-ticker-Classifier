@@ -17,6 +17,7 @@ services:
   nlp_app:
     build: .
     container_name: nlp_ticker_app
+    restart: always
     depends_on:
       - chroma_db
     volumes:
