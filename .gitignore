@@ -10,4 +10,4 @@ Dockerfile
 docker-compose.yml
 .dockerignore
 chroma_data/
-
+.pytest_cache/
