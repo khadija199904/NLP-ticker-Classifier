@@ -58,5 +58,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/rag-pipeline:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/rag-pipeline:${{ github.ref_name }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/nlp-ticker-classifier:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/nlp-ticker-classifier:${{ github.ref_name }}
