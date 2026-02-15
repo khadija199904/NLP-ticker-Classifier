@@ -20,8 +20,8 @@ services:
     depends_on:
       - chroma_db
     volumes:
-      - /src :/app/src
-      - /infrastructure:/app/infrastructure
+      - ./src:/app/src
+      - ./infrastructure:/app/infrastructure
       - hf_cache:/root/.cache/huggingface 
     env_file:
       - .env

@@ -10,3 +10,8 @@ chroma_db/
 data/dataset.csv
 .github/
 tests/
+notebooks/
+.env.example
+README.md
+.gitignore
+.dockerignore
