@@ -6,12 +6,14 @@ import joblib
 import time
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
+from sklearn.metrics import classification_report, accuracy_score
 
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
+from src.embedding_service import get_chroma_client
 from config import (
+    COLLECTION_NAME, 
+  
     COLLECTION_NAME, 
     MODEL_SAVE_PATH
 )
@@ -41,7 +43,7 @@ def load_data_from_chroma():
         return X, y
         
     except Exception as e:
-        print(f"Erreur lors de la récupération des données : {e}")
+        print(f" Erreur lors de la récupération des données : {e}")
         return None, None
 
 def train_and_evaluate():
@@ -49,25 +51,23 @@ def train_and_evaluate():
     X, y = load_data_from_chroma()
     
     if X is None or len(X) == 0:
-        print(" Impossible de continuer : Aucune donnée trouvée dans ChromaDB.")
+        print("Impossible de continuer : Aucune donnée trouvée dans ChromaDB.")
         return
 
-    #  Séparation des données (80% Train / 20% Test)
-   
+    # 2. Séparation des données (80% Train / 20% Test)
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.20, random_state=42, stratify=y
     )
     
     print(f" Dataset split : Train={len(X_train)} | Test={len(X_test)}")
 
-    #  Entraînement du modèle
-    print("Entraînement du classifieur (Logistic Regression)...")
+    # 3. Entraînement du modèle
+    print(" Entraînement du classifieur (Logistic Regression)...")
     clf = LogisticRegression(
         max_iter=1000, 
-        random_state=42,
+        solver='lbfgs',
         C=1.0 
     )
-    
     start_train = time.time()
     clf.fit(X_train, y_train)
     train_duration = time.time() - start_train
@@ -77,7 +77,7 @@ def train_and_evaluate():
     y_pred = clf.predict(X_test)
     
     print("\n" + "="*40)
-    print("RAPPORT DE PERFORMANCE")
+    print(" RAPPORT DE PERFORMANCE")
     print("="*40)
     print(f"Accuracy Score: {accuracy_score(y_test, y_pred):.4f}")
     print("\nClassification Report:")
