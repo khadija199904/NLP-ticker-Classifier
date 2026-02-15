@@ -11,4 +11,3 @@ docker-compose.yml
 .dockerignore
 chroma_data/
 
-artifacts/
