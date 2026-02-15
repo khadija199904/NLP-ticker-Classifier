@@ -1,11 +1,14 @@
 #  NLP Ticket Classifier : Industrialisation MLOps
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
-[![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ML-F7931E?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
+[![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
+[![LangChain](https://img.shields.io/badge/LangChain-Framework-1C3C3C?logo=langchain&logoColor=white)](https://www.langchain.com/)
 [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Transformers-FFD21E?logo=huggingface&logoColor=black)](https://huggingface.co/)
-[![ChromaDB](https://img.shields.io/badge/ChromaDB-Vector%20Store-FA5252?logo=chromadb&logoColor=white)](https://www.trychroma.com/)
-[![Docker](https://img.shields.io/badge/Docker-Industrialization-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
-[![Evidently AI](https://img.shields.io/badge/Evidently%20AI-Quality%20Monitoring-4B0082)](https://www.evidentlyai.com/)
+[![ChromaDB](https://img.shields.io/badge/ChromaDB-Vector%20Database-FA5252?logo=chromadb&logoColor=white)](https://www.trychroma.com/)
+[![Docker](https://img.shields.io/badge/Docker-Containerization-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
+[![Prometheus](https://img.shields.io/badge/Prometheus-Monitoring-E6522C?logo=prometheus&logoColor=white)](https://prometheus.io/)
+[![Grafana](https://img.shields.io/badge/Grafana-Visualization-F46800?logo=grafana&logoColor=white)](https://grafana.com/)
+[![Evidently AI](https://img.shields.io/badge/Evidently%20AI-ML%20Monitoring-4B0082)](https://www.evidentlyai.com/)
 
 Ce projet propose une solution industrielle pour la classification automatique de tickets de support IT. À partir d'un historique de **62 609 emails**, le pipeline transforme le texte en représentations sémantiques pour prédire le type de ticket (*Incident, Request, Problem, Change*). 
 
