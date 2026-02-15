@@ -1,4 +1,4 @@
-name: CI-CD
+name: CI/CD 
 
 on:
   push:
@@ -32,7 +32,8 @@ jobs:
       - name: Exécution des tests (Pytest)
         run: pytest
 
-    build-docker:
+  
+  build-docker:
     needs: test-and-lint
     runs-on: ubuntu-latest
     
