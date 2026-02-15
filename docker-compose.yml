@@ -10,6 +10,8 @@ services:
       - IS_PERSISTENT=TRUE
       - PERSIST_DIRECTORY=/chroma/chroma
     restart: always
+    networks:
+      - nlp_network
 
   nlp_app:
     build: .
@@ -27,6 +29,8 @@ services:
       - CHROMA_HOST=chroma_db
       - CHROMA_PORT=8000
       - HF_HOME=/root/.cache/huggingface
+    networks:
+      - nlp_network
 
   prometheus:
     image: prom/prometheus
@@ -36,6 +40,8 @@ services:
     ports:
       - "9090:9090"
     restart: always
+    networks:
+      - nlp_network
 
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
@@ -48,12 +54,16 @@ services:
     ports:
       - "8080:8080"
     restart: always
+    networks:
+      - nlp_network
 
   grafana:
     image: grafana/grafana
     container_name: grafana
     ports:
       - "3000:3000"
+    networks:
+      - nlp_network
     
 
   node-exporter:
@@ -62,7 +72,11 @@ services:
     ports:
       - "9100:9100"
     restart: always
-
+    networks:
+      - nlp_network
+networks:
+  nlp_network:
+    driver: bridge
 volumes:
   chroma_data:
   hf_cache:
