@@ -89,7 +89,7 @@ NLP-ticker-Classifier/
 ###  Installation (Python)
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/khadija199904/NLP-ticker-Classifier.git
 cd NLP-ticker-Classifier
 
 ### 2. Démarrage de la Stack
