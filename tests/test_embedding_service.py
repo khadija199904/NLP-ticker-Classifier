@@ -1,12 +1,11 @@
 import sys
 import os
-import pytest
 from unittest.mock import MagicMock, patch
 
 # Add project root to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from src.embedding_service import get_embedding_model, get_chroma_client, store_embeddings_batched, pipeline_embedding
+from src.embedding_service import get_embedding_model, get_chroma_client ,pipeline_embedding
 
 @patch('src.embedding_service.HuggingFaceEmbeddings')
 @patch('src.embedding_service.HF_TOKEN', 'fake_token')
@@ -26,7 +25,7 @@ def test_get_chroma_client(mock_http_client):
 
 @patch('src.embedding_service.get_chroma_client')
 @patch('src.embedding_service.pd.read_csv')
-@patch('src.embedding_service.store_embeddings_batched')
+@patch('src.embedding_service.store_embeddings')
 @patch('src.embedding_service.get_embedding_model')
 @patch('src.embedding_service.os.path.exists')
 def test_pipeline_embedding(mock_exists, mock_get_model, mock_store, mock_read_csv, mock_get_client):
@@ -35,7 +34,7 @@ def test_pipeline_embedding(mock_exists, mock_get_model, mock_store, mock_read_c
     
     mock_client = MagicMock()
     mock_collection = MagicMock()
-    mock_collection.count.return_value = 0 # Empty collection
+    mock_collection.count.return_value = 0
     mock_client.get_or_create_collection.return_value = mock_collection
     mock_get_client.return_value = mock_client
     
@@ -46,10 +45,10 @@ def test_pipeline_embedding(mock_exists, mock_get_model, mock_store, mock_read_c
     mock_df.apply.return_value.tolist.return_value = [{"type": "bug"}]
     mock_read_csv.return_value = mock_df
     
-    # Run
+    
     pipeline_embedding("fake_path.csv")
     
-    # Assertions
+    
     mock_get_client.assert_called()
     mock_read_csv.assert_called_with("fake_path.csv")
     mock_get_model.assert_called_once()

@@ -1,9 +1,6 @@
 import pandas as pd
-import numpy as np
 import joblib
 from sklearn.model_selection import train_test_split
-import joblib
-
 from evidently import Report, DataDefinition, Dataset, MulticlassClassification
 from evidently.presets import DataDriftPreset, ClassificationPreset
 

@@ -1,7 +1,5 @@
 import os
 import sys
-import chromadb
-import pandas as pd
 import joblib
 import time
 from sklearn.model_selection import train_test_split
@@ -12,8 +10,6 @@ from sklearn.metrics import classification_report, accuracy_score
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.embedding_service import get_chroma_client
 from config import (
-    COLLECTION_NAME, 
-  
     COLLECTION_NAME, 
     MODEL_SAVE_PATH
 )

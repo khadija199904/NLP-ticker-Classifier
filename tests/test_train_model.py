@@ -4,9 +4,9 @@ from unittest.mock import MagicMock, patch
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from src.train_model import load_data_from_chroma, train_and_evaluate
+from src.train_eval import load_data_from_chroma, train_and_evaluate
 
-@patch('src.train_model.get_chroma_client')
+@patch('src.train_eval.get_chroma_client')
 def test_load_data_from_chroma(mock_get_client):
     """Test loading data from ChromaDB."""
     mock_client = MagicMock()
@@ -28,12 +28,11 @@ def test_load_data_from_chroma(mock_get_client):
     assert y == ['bug', 'feature']
     mock_client.get_collection.assert_called_once()
 
-@patch('src.train_model.load_data_from_chroma')
-@patch('src.train_model.train_test_split')
-@patch('src.train_model.LogisticRegression')
-@patch('src.train_model.joblib.dump')
-@patch('src.train_model.os.makedirs')
-def test_train_and_evaluate(mock_makedirs, mock_dump, mock_log_reg, mock_tts, mock_load):
+@patch('src.train_eval.load_data_from_chroma')
+@patch('src.train_eval.train_test_split')
+@patch('src.train_eval.LogisticRegression')
+@patch('src.train_eval.joblib.dump')
+def test_train_and_evaluate(mock_dump, mock_log_reg, mock_tts, mock_load):
     """Test the training pipeline."""
     
     mock_load.return_value = ([[0.1]], ['bug']) 

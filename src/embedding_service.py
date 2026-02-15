@@ -33,7 +33,7 @@ def get_embedding_model():
 def get_chroma_client():
     return chromadb.HttpClient(host=CHROMA_HOST, port=int(CHROMA_PORT))
 
-def store_embeddings_batched(texts: list[str], embedding_model: Any, metadatas: list[dict]):
+def store_embeddings(texts: list[str], embedding_model: Any, metadatas: list[dict]):
     """
     Action : Stockage par lots (batching) dans ChromaDB sans découpage (no chunking).
     """
@@ -126,7 +126,7 @@ def pipeline_embedding(file_path=DATA_CLEANED_PATH):
 
     model = get_embedding_model()
     
-    return store_embeddings_batched(texts, model, metadatas)
+    return store_embeddings(texts, model, metadatas)
 
 if __name__ == "__main__":
     pipeline_embedding()
