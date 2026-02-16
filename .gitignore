@@ -1,0 +1,13 @@
+.venv
+data/
+.env
+__pycache__/
+chroma_data/
+
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+.dockerignore
+chroma_data/
+.pytest_cache/

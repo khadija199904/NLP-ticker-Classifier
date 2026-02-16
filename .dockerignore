@@ -1,0 +1,17 @@
+.venv
+.git
+__pycache__
+.pytest_cache
+*.pyc
+.ipynb_checkpoints
+chroma_data/
+chroma_db/
+.env
+data/dataset.csv
+.github/
+tests/
+notebooks/
+.env.example
+README.md
+.gitignore
+.dockerignore
