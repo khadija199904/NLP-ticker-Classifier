@@ -37,10 +37,13 @@ def get_chroma_client():
 
 def get_vector_count():
     try:
-        client = get_chroma_client
-        return client.get_collection(name=COLLECTION_NAME).count()
-    except:
+        client = get_chroma_client()
+        collection = client.get_collection(name=COLLECTION_NAME)
+        return collection.count()
+    except Exception as e:
+        print(f"Error getting vector count: {e}")
         return 0
+
 
 def store_embeddings(texts: list[str], embedding_model: Any, metadatas: list[dict]):
     """
