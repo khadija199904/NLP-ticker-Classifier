@@ -7,19 +7,29 @@ spec:
     spec:
       containers:
       - name: nlp-pipeline
-        image: nlp-ticker-classifier:latest
-        imagePullPolicy: IFNotPresent
-        command: ["python", "src/train_model.py"]
+        image: khadijaelabbioui/nlp-ticker-classifier
+        imagePullPolicy: Always 
+        command: ["python", "src/train_eval.py"]
+        envFrom:
+        - configMapRef:
+            name: nlp-config  
         env:
         - name: CHROMA_HOST
           value: "chroma-service" 
         - name: CHROMA_PORT
           value: "8000"
         volumeMounts:
-        - name: data-volume
-          mountPath: /app/data
-      restartPolicy: Never
+        - name: data-storage # Doit correspondre au nom dans 'volumes' ci-dessous
+          mountPath: /app/artifacts
+          
+      # LE BLOC VOLUMES DOIT ÊTRE ALIGNÉ AVEC LE BLOC CONTAINERS
       volumes:
-      - name: data-volume
+      - name: data-storage
         hostPath:
-          path: /data/nlp-classifier 
+          path: /home/dell/Desktop/ProjectsSimplon/NLP-ticker-Classifier/artifacts
+          type: DirectoryOrCreate
+          
+      restartPolicy: Never
+
+
+      
