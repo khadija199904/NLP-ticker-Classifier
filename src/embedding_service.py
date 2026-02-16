@@ -30,8 +30,17 @@ def get_embedding_model():
         encode_kwargs=encode_kwargs
     )
 
+
+
 def get_chroma_client():
     return chromadb.HttpClient(host=CHROMA_HOST, port=int(CHROMA_PORT))
+
+def get_vector_count():
+    try:
+        client = get_chroma_client
+        return client.get_collection(name=COLLECTION_NAME).count()
+    except:
+        return 0
 
 def store_embeddings(texts: list[str], embedding_model: Any, metadatas: list[dict]):
     """
