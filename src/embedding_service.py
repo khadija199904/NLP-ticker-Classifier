@@ -47,7 +47,7 @@ def get_vector_count():
 
 def store_embeddings(texts: list[str], embedding_model: Any, metadatas: list[dict]):
     """
-    Action : Stockage par lots (batching) dans ChromaDB sans découpage (no chunking).
+    Action : Stockage par lots (batching) dans ChromaDB 
     """
     if not texts:
         print("Erreur : Aucun texte à stocker.")
@@ -76,7 +76,7 @@ def store_embeddings(texts: list[str], embedding_model: Any, metadatas: list[dic
             current_batch_num = (i // batch_size) + 1
             total_batches = (total_len + batch_size - 1) // batch_size
             
-            print(f"🚀 Envoi du lot {current_batch_num}/{total_batches} ({len(batch_texts)} docs)...")
+            print(f" Envoi du lot {current_batch_num}/{total_batches} ({len(batch_texts)} docs)...")
 
             if vectorstore is None:
                 # Création de la collection avec le premier lot
