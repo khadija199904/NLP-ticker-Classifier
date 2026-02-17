@@ -9,7 +9,7 @@ spec:
       - name: nlp-pipeline
         image: khadijaelabbioui/nlp-ticker-classifier
         imagePullPolicy: Always 
-        command: ["python", "src/train_eval.py"]
+        command: ["python", "src/main.py"]
         envFrom:
         - configMapRef:
             name: nlp-config  

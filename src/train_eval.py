@@ -15,10 +15,7 @@ from config import (
 )
 
 def load_data_from_chroma():
-    """
-    Récupère les embeddings et les labels directement depuis ChromaDB.
-    Évite de recalculer les embeddings à chaque entraînement.
-    """
+    
     try:
         print("Chargement des données...")
         client = get_chroma_client()
@@ -50,14 +47,13 @@ def train_and_evaluate():
         print("Impossible de continuer : Aucune donnée trouvée dans ChromaDB.")
         return
 
-    # 2. Séparation des données (80% Train / 20% Test)
+   
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.20, random_state=42, stratify=y
     )
     
     print(f" Dataset split : Train={len(X_train)} | Test={len(X_test)}")
 
-    # 3. Entraînement du modèle
     print(" Entraînement du classifieur (Logistic Regression)...")
     clf = LogisticRegression(
         max_iter=1000, 
@@ -69,7 +65,7 @@ def train_and_evaluate():
     train_duration = time.time() - start_train
     print(f" Entraînement terminé en {train_duration:.2f}s")
 
-    #  Évaluation
+ 
     y_pred = clf.predict(X_test)
     
     print("\n" + "="*40)

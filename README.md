@@ -100,24 +100,10 @@ docker compose up -d --build
 
 ### 3. Exécution du Pipeline (Orchestrateur)
 
-
-####  Vectorisation et Ingestion (ChromaDB)
-Génération des embeddings et stockage par lots de 500 (sans découpage en chunks pour préserver la cohérence) :
 ```bash
-docker compose exec nlp_app python /app/src/embedding_service.py
+docker compose exec nlp_app python /app/src/main.py
 ```
 
-#### Entraînement et evaluation
-Entraînement de la **Régression Logistique** . Le script  sauvegarde le modèle entrainée dans `artifacts/models/` :
-
-```bash
-docker compose exec nlp_app python /app/src/train_eval.py
-```
-#### Monitoring de la qualité (Evidently AI)
-Analyse du Data Drift et génération du rapport interactif :
-```bash
-docker compose exec nlp_app python /app/src/monitoring.py
-```
 ---
 
 ## Monitoring & Observabilité

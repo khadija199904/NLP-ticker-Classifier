@@ -30,12 +30,24 @@ def get_embedding_model():
         encode_kwargs=encode_kwargs
     )
 
+
+
 def get_chroma_client():
     return chromadb.HttpClient(host=CHROMA_HOST, port=int(CHROMA_PORT))
 
+def get_vector_count():
+    try:
+        client = get_chroma_client()
+        collection = client.get_collection(name=COLLECTION_NAME)
+        return collection.count()
+    except Exception as e:
+        print(f"Error getting vector count: {e}")
+        return 0
+
+
 def store_embeddings(texts: list[str], embedding_model: Any, metadatas: list[dict]):
     """
-    Action : Stockage par lots (batching) dans ChromaDB sans découpage (no chunking).
+    Action : Stockage par lots (batching) dans ChromaDB 
     """
     if not texts:
         print("Erreur : Aucun texte à stocker.")
@@ -64,7 +76,7 @@ def store_embeddings(texts: list[str], embedding_model: Any, metadatas: list[dic
             current_batch_num = (i // batch_size) + 1
             total_batches = (total_len + batch_size - 1) // batch_size
             
-            print(f"🚀 Envoi du lot {current_batch_num}/{total_batches} ({len(batch_texts)} docs)...")
+            print(f" Envoi du lot {current_batch_num}/{total_batches} ({len(batch_texts)} docs)...")
 
             if vectorstore is None:
                 # Création de la collection avec le premier lot
